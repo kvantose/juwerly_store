@@ -1,0 +1,34 @@
+.footer {
+    background-color: var(--black);
+}
+
+.footer__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 160px;
+}
+
+.footer__top__left p {
+    font-size: 20px;
+    font-weight: 300;
+    color: white;
+    font-family: "Lato", sans-serif;
+}
+.footer__top__img {
+    width: 90px;
+    height: 90px;
+    margin-right: 200px;
+}
+.footer__top__right img {
+    padding: 0 15px;
+}
+
+
+
+@media screen and (max-width: 1200px) {
+    .footer__top {
+        flex-direction: column;
+    }
+}

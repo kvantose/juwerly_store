@@ -1,0 +1,154 @@
+.header {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    opacity: 0.8;
+    background: #010C0899;
+    z-index: 10;
+}
+
+.header__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.header__right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    height: 100%;
+    margin-right: 160px;
+}
+
+.burgerMenu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 93.5vh;
+    background: #010C08;
+    width: 40%;
+    transition: all 0.3s linear;
+    padding: 30px 160px;
+}
+
+.line {
+    width: 60%;
+    height: 1px;
+    background-color: white;
+}
+
+.burgerMenu__list__container {
+    list-style-type: none;
+    margin: 20px 100px; 
+    padding: 0;
+    overflow: hidden;
+}
+
+.burgerMenu__list {
+    font-weight: 100;
+    color: white;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.burgerMenu__right {
+    width: 100%;
+    filter: blur(19px);
+}
+
+.burgerMenu__list:hover {
+    color: #E0E0E0;
+    margin: 15px 0;
+    transition: all 0.5s ease;
+}
+
+.burgerMenu__bottom {
+    color: #fff;
+}
+.politics {
+    font-size: 20px;
+    font-weight: 100;
+    text-decoration: underline;
+    cursor: pointer;
+    margin: 90px 0 50px 90px;
+}
+
+.phone {
+    font-family: "Lato", sans-serif;
+    font-size: 32px;
+    line-height: 38.4px;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.address {
+    font-family: "Lato", sans-serif;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 38.4px;
+    cursor: pointer;
+}
+
+
+.search__input {
+    background: url("../../assets/search.png") no-repeat;
+    background-position: 140px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: white;
+}
+
+
+
+@media screen and (max-width: 1200px) {
+    .header__right {
+        margin-right: 80px;
+    }
+
+    .burgerMenu {
+        width: 100%;
+        padding: 30px 70px;
+    }
+
+    .politics {
+        font-size: 18px;
+        margin: 90px 0 50px 90px;
+    }
+
+    .phone , .address {
+        font-size: 24px;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .header__right {
+        margin-right: 20px;
+    }
+
+    .burgerMenu {
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    .burgerMenu__list__container {
+        margin: 20px 20px;
+    }
+
+    .politics {
+        font-size: 14px;
+        margin: 50px 0;
+    }
+
+    .phone , .address {
+        font-size: 18px;
+    }
+}
