@@ -40,7 +40,7 @@ export default function Header({ open, setOpen }) {
                   onClick={() => handleOpenBurgerMenu()}
                 />
 
-                <img src={logo} alt="logo" />
+                <img src={logo} alt="logo"  className="header__logo__img"/>
 
                 <div className="header__right">
                   {searchOpen ? (
