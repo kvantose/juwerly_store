@@ -1,0 +1,140 @@
+.advantage__container {
+    margin: 150px 0;
+}
+
+.advantage__title {
+    font-size: 32px;
+    padding: 100px 0;
+}
+
+.advantage__content__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.advantage__content {
+    border: 1px solid var(--black);
+    width: 49%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.advantage__content:nth-child(1) {
+    border-top-left-radius: 16px;
+    border-bottom: none;
+    border-right: none;
+}
+
+.advantage__content:nth-child(2) {
+    border-top-right-radius: 16px;
+    border-bottom: none;
+}
+
+.advantage__content:nth-child(3) {
+    border-bottom-left-radius: 16px;
+}
+
+.advantage__content:nth-child(4) {
+    border-bottom-right-radius: 16px;
+    border-left: none;
+}
+
+.advantage__title__text {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.advantage__text {
+    font-size: 64px;
+    font-weight: 400;
+    color: var(--light-green);
+}
+
+.advantage__description {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+
+
+@media screen and (max-width: 1200px) {
+    .advantage__title {
+        font-size: 24px;
+        margin: 100px 0px 50px 0;
+    }
+
+    .advantage__title__text {
+        font-size: 20px;
+    }
+
+    .advantage__text {
+        font-size: 40px;
+    }
+
+    .advantage__description {
+        font-size: 14px;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .advantage__container {
+      margin: 50px 0;  
+    }
+
+    .advantage__content__container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .advantage__content {
+        height: 200px;
+        width: 100%;
+    }
+
+    .advantage__content:nth-child(1) {
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        border-right: 1px solid var(--black);
+        border-bottom: none;
+    }
+
+    .advantage__content:nth-child(2) {
+        border-radius: 0;
+    }
+
+    .advantage__content:nth-child(3) {
+        border-radius: 0;
+        border-bottom: none;
+    }
+
+    .advantage__content:nth-child(4) {
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+        border-left: 1px solid var(--black);
+    }
+
+    .advantage__title {
+        font-size: 24px;
+        padding: 0;
+    }
+
+    .advantage__title__text {
+        font-size: 16px;
+    }
+
+    .advantage__text {
+        font-size: 20px;
+    }
+
+    .advantage__description {
+        font-size: 12px;
+    }
+}

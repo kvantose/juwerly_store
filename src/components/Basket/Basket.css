@@ -1,0 +1,118 @@
+.basket__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.basket__main__container {
+    flex-direction: column;
+    
+}
+
+.basket__container img {
+    width: clamp(100px, 30%, 230px);
+    height: clamp(100px, 30%, 230px);
+}
+
+.basket__info__container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px
+}
+
+.basket__info__title {
+    font-size: 14px;
+    color: var(--gray2);
+    font-weight: 200;
+}
+
+.basket__info__description {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.basket__info__description__small {
+    font-size: 20;
+    font-weight: 300;
+}
+
+.basket__count {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+
+.basket__count p {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.basket__button {
+    height: 40px;
+    width: 40px;
+    border-radius: 16px;
+    background-color: var(--white);
+    border: 1px solid var(--black);
+}
+
+.basket__button:hover {
+    transition: all 0.3s ease;
+    background-color: var(--gray);
+}
+
+.basket__button:active {
+    transition: all 0.3s ease;
+
+    background-color: var(--light-green);
+}   
+
+.basket__info {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+@media screen and (max-width: 1200px) {
+    .basket__container {
+        gap: 20px;
+    }
+    .basket__count {
+        gap: 10px;
+    }
+
+    .basket__info__description__small {
+        max-width: 150px;
+        font-size: 14px;
+    }
+
+    .basket__button {
+        height: 25px;
+        width: 25px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .basket__info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+
+    }
+
+    .basket__info__description {
+        font-size: 16px;
+    }
+
+    .basket__info__description__small {
+        font-size: 12px;
+    }
+}

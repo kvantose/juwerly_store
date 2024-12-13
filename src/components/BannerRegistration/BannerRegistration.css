@@ -1,0 +1,130 @@
+.bannerRegistration {
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: brightness(0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bannerRegistration__container {
+    width: 50%;
+    height: 55%;
+    border-radius: 16px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bannerRegistration__content__container {
+   padding: 0px 50px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.bannerRegistration__content {
+    position: relative;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.bannerRegistration__title {
+    font-size: 54px;
+    font-weight: 800;
+}
+
+.bannerRegistration__input {
+    width: 100%;
+    height: 50px;
+    border-radius: 16px;
+    border: 1px solid var(--white);
+    background-color: rgb(28, 28, 28, 0);
+    color: var(--white);
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.bannerRegistration__input::placeholder {
+    color: var(--white);
+}
+
+.bannerRegistration__input:hover {
+    border: 1px solid var(--light-green);
+}
+
+.bannerRegistration__input:active {
+    border: 1px solid var(--light-green);
+}
+
+.bannerRegistration__button {
+    width: 100%;
+    height: 50px;
+    border-radius: 16px;
+    border: 1px solid var(--white);
+    color: var(--white);
+    background-color: rgb(28, 28, 28, 0);
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.bannerRegistration__button:hover {
+    color: var(--white);
+    background-color: var(--light-green);
+}
+
+.bannerRegistration__button:active {
+    color: var(--black);
+    background-color: var(--light-green);
+}
+
+
+@media screen and (max-width: 1200px) {
+    .bannerRegistration__container {
+        width: 70%;
+    }
+    .bannerRegistration__title {
+        font-size: 30px;
+    }
+
+    .bannerRegistration__input {
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .bannerRegistration__button {
+        height: 40px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .bannerRegistration__container {
+        width: 80%;
+    }
+    
+    .bannerRegistration__title {
+        font-size: 20px;
+    }
+
+    .bannerRegistration__input {
+        height: 30px;
+        font-size: 10px;
+    }
+
+    .bannerRegistration__button {
+        height: 30px;
+        font-size: 10px;
+    }
+}

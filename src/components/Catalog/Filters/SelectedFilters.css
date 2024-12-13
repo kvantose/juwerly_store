@@ -1,0 +1,31 @@
+.selected__filters__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.selected__filters__button {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.selected__filters__link {
+    text-decoration: underline;
+    color: var(--black);
+}
+
+
+.selected__filters__select {
+    border-radius: 20px;
+    width: 180px;
+    height: 30px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.selected__filters__select:active {
+    border: none;
+}

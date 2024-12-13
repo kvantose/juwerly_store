@@ -1,0 +1,144 @@
+.footer {
+    background-color: var(--black);
+    margin-top: 150px;
+}
+
+.footer__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 160px;
+}
+
+.footer__top__left p {
+    font-size: 20px;
+    font-weight: 300;
+    color: white;
+    font-family: "Lato", sans-serif;
+    text-align: end;
+}
+.footer__top__img {
+    width: 90px;
+    height: 90px;
+    margin-left: 120px;
+}
+.footer__top__right img {
+    padding: 0 15px;
+}
+
+
+
+.line__footer {
+    width: 100%;
+    height: 1px;
+    background-color: var(--light-green);
+}
+
+.footer__center__content ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 160px;
+}
+
+.footer__center__content li {
+    color: var(--white);
+    font-family: "Lato" italic;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.footer__center__content li:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer__bottom li {
+    color: var(--white);
+    font-family: "Lato" italic;
+    font-weight: 300;
+    font-size: 20px;
+    padding: 20px 0px;
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 1200px) {
+    .footer__top {
+        padding: 50px 50px;
+    }
+
+    .footer__top__left p {
+        font-size: 16px;
+    }
+
+    .footer__top__img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .footer__center__content ul {
+        padding: 10px 50px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .footer__center__content li {
+        font-size: 16px;
+        padding: 5px 0;
+    }
+
+    .footer__bottom li {
+        font-size: 16px;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .footer__top__img {
+        display: none;
+    }
+
+    .footer__top {
+        flex-direction: column;
+        align-items: start;
+        gap: 0px;
+        padding: 20px;
+    }
+
+    .footer__top__left p {
+        font-size: 14px;
+        text-align: start;
+    }
+
+    .footer__top__right img {
+        padding: 0;
+    }
+
+    .footer__center__content ul {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    .footer__center__content li {
+        font-size: 14px;
+    }
+
+    .footer__bottom li {
+        font-size: 14px;
+        padding: 0;
+        text-align: center;
+    }
+
+    .footer {
+        margin-top: 80px;
+    }
+}

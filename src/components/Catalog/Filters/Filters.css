@@ -1,0 +1,11 @@
+.filters__container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media screen and (max-width: 600px) {
+    .filters__container {
+        display: none;
+    }
+}

@@ -1,0 +1,259 @@
+
+.header__basket__p {
+    position: absolute;
+    background-color: var(--light-green);
+    padding: 2px 5px;
+    border-radius: 100%;
+    top: 8px;
+    right: 155px;
+    font-size: 10px;
+}
+
+.header__likes__p {
+    position: absolute;
+    background-color: var(--light-green);
+    padding: 2px 5px;
+    border-radius: 100%;
+    top: 7px;
+    right: 230px;
+    font-size: 10px;
+}
+
+.header__likes__menu {
+    position: absolute;
+    top: 80px;
+    right: 240px;
+    backdrop-filter: blur(10px);
+    background: rgba(1, 12, 8, 0.9);
+    padding: 15px 20px;
+    max-height: 400px;
+    min-width: 300px;
+    overflow-y: scroll;
+}
+
+.header__likes__content__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.header__likes__content {
+    flex-direction: column;
+}
+
+.header__likes__content__button__basket {
+    background: none;
+    border: 1px solid var(--gray);
+    color: var(--gray);
+    width: 100%;
+    height: 30px;
+    border-radius: 12px;
+}
+
+.header__likes__content__button {
+    background: none;
+    border: 1px solid var(--light-green);
+    color: var(--white);
+    width: 100%;
+    height: 30px;
+    border-radius: 12px;
+}
+
+.header__likes__menu p {
+    font-size: 16px;
+}
+
+.header__logo__img {
+    margin-left: 100px;
+}
+
+.header {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    background: rgba(1, 12, 8, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+
+.header__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.header__right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    height: 100%;
+    margin-right: 160px;
+}
+
+.burgerMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 100vh;
+    background: #010C08;
+    width: 40%;
+    transition: all 0.3s linear;
+    padding: 30px 160px;
+    backdrop-filter: blur(10px);
+}
+
+.line {
+    width: 60%;
+    height: 1px;
+    background-color: white;
+}
+
+.burgerMenu__list__container {
+    list-style-type: none;
+    margin: 20px 100px; 
+    padding: 0;
+    overflow: hidden;
+}
+
+.burgerMenu__list {
+    font-weight: 100;
+    color: white;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.burgerMenu__right {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    backdrop-filter: brightness(0.3);
+    z-index: 5;
+}
+
+.burgerMenu__list:hover {
+    color: #E0E0E0;
+    margin: 15px 0;
+    transition: all 0.5s ease;
+}
+
+.burgerMenu__bottom {
+    color: #fff;
+}
+.politics {
+    font-size: 20px;
+    font-weight: 100;
+    text-decoration: underline;
+    cursor: pointer;
+    margin: 90px 0 50px 90px;
+}
+
+.phone {
+    font-family: "Lato", sans-serif;
+    font-size: 32px;
+    line-height: 38.4px;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.address {
+    font-family: "Lato", sans-serif;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 38.4px;
+    cursor: pointer;
+}
+
+
+.search__input {
+    background: url("../../assets/search.png") no-repeat;
+    background-position: 140px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: white;
+}
+
+
+
+@media screen and (max-width: 1200px) {
+    .header__right {
+        margin-right: 80px;
+    }
+
+    .burgerMenu {
+        width: 100%;
+        padding: 30px 70px;
+    }
+
+    .politics {
+        font-size: 18px;
+        margin: 90px 0 50px 90px;
+    }
+
+    .phone , .address {
+        font-size: 24px;
+    }
+
+    .header__likes__p {
+        right: 155px;
+    }
+
+    .header__basket__p {
+        right: 75px;
+    }
+
+    .header__likes__menu {
+        right: 110px;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .header__logo__img {
+        margin-left:0px;
+    }
+    .header__right {
+        margin-right: 20px;
+    }
+
+    .burgerMenu {
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    .burgerMenu__list__container {
+        margin: 20px 20px;
+    }
+
+    .politics {
+        font-size: 14px;
+        margin: 50px 0;
+    }
+
+    .phone , .address {
+        font-size: 18px;
+    }
+
+    .header__likes__p {
+        right: 90px;
+    }
+
+    .header__basket__p {
+        right: 15px;
+    }
+
+    .header__likes__menu {
+        right: 0;
+    }
+}

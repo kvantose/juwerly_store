@@ -1,0 +1,48 @@
+:root {
+  --white: #FFFFFF;
+  --light-green: #20CF8F;
+  --gray: #95999899;
+  --gray2: #818181;
+  --black: #000000;
+  --red: #fc6969;
+}
+
+
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: "Montserrat", sans-serif;
+}
+
+li {
+  list-style: none;
+  font-size: 32px;
+}
+
+.app__container {
+  margin: 0 160px;
+}
+
+
+@media screen and (max-width: 1200px) {
+  li {
+      font-size: 24px;
+  }
+  
+  .app__container {
+      margin: 0 80px;
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  li {
+      font-size: 16px;
+  }
+
+  .app__container {
+      margin: 0 20px;
+  }
+  
+}
