@@ -18,9 +18,7 @@ const primary = {
 };
 
 
-export default function Catalog({ open, setOpen, likes, setLikes, basket, setBasket }:
-    { open: boolean, setOpen: Function, likes: number[], setLikes: Function, basket: number[], setBasket: Function }) {
-
+export default function Catalog({ open, setOpen }: { open: boolean, setOpen: (open: boolean) => void }) {
     const [filters, setFilters] = useState<string[]>([]);
     const [coast, setCoast] = useState<number>(72_300);
     const [currentPage, setCurrentPage] = useState(1);
@@ -39,7 +37,7 @@ export default function Catalog({ open, setOpen, likes, setLikes, basket, setBas
 
     return (
         <>
-            <Header open={open} setOpen={setOpen} likes={likes} setLikes={setLikes} basket={basket} setBasket={setBasket} />
+            <Header open={open} setOpen={setOpen} />
             <div className="app__container">
                 <Breadcrumbs aria-label="breadcrumb" sx={{ mt: 15, mb: 5 }}>
                     <Link
@@ -78,10 +76,6 @@ export default function Catalog({ open, setOpen, likes, setLikes, basket, setBas
                             currentPage={currentPage}
                             pageCount={pageCount}
                             setPageCount={setPageCount}
-                            likes={likes}
-                            setLikes={setLikes}
-                            basket={basket}
-                            setBasket={setBasket}
                         />
                     </div>
                 </div>

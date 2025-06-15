@@ -18,26 +18,19 @@ function App() {
           <Home
             open={open}
             setOpen={setOpen}
-            likes={likes}
-            setLikes={setLikes}
-            basket={basket}
-            setBasket={setBasket}
           />} />
         <Route path='catalog' element={
           <Catalog
             open={open}
             setOpen={setOpen}
-            likes={likes}
-            setLikes={setLikes} basket={basket}
-            setBasket={setBasket} />} />
+          />}
+        />
         <Route path='basket' element={
           <Basket
             open={open}
             setOpen={setOpen}
-            likes={likes}
-            setLikes={setLikes}
-            basket={basket}
-            setBasket={setBasket} />} />
+          />}
+        />
         <Route path='about' element={
           <AboutUs
             open={open}

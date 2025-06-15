@@ -1,11 +1,11 @@
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-
+import "react-multi-carousel/lib/styles.css"
 import "./MiniCatalog.css";
-import { data } from "../../../../mock/catalog";
 import { useNavigate } from "react-router-dom";
+import { useJewelryStore } from "../../../store";
+import type { Catalog } from "../../../interfaces/catalog";
 
 const responsive = {
   mobile: {
@@ -15,19 +15,29 @@ const responsive = {
   },
 };
 
-export default function MiniCatalog({ props, handleLike, likes, basket, setBasket, number_start, number_end }: {
-  props: string,
-  handleLike: Function,
-  likes: number[],
-  basket: number[],
-  setBasket: Function,
-  number_start: number,
-  number_end: number
-}) {
+export default function MiniCatalog({ props, number_start, number_end }: { props: string, number_start: number, number_end: number }) {
   {
+
+    const data = useJewelryStore((state) => state.catalog);
+    const liked = useJewelryStore((state) => state.liked);
+    const addToLiked = useJewelryStore((state) => state.addToLiked);
+    const removeLiked = useJewelryStore((state) => state.removeLiked);
+
+    const basket = useJewelryStore((state) => state.basket);
+    const addToBasket = useJewelryStore((state) => state.addToBasket);
+    const removeBasket = useJewelryStore((state) => state.removeBasket);
+
+    const handleLike = (item: Catalog) => {
+      if (liked?.includes(item)) {
+        removeLiked(item.id);
+      } else {
+        addToLiked(item);
+      }
+    };
+
     const navigate = useNavigate();
     const handleDeleteBasketItem = (id: number): void => {
-      setBasket(basket.filter((item) => item !== id));
+      removeBasket(id);
     };
     const handleClickToBasket = () => {
       navigate("/basket");
@@ -42,18 +52,18 @@ export default function MiniCatalog({ props, handleLike, likes, basket, setBaske
           <div className="mini__catalog__header">
             {data.slice(number_start, number_end).map((item) => (
               <div className="mini__catalog" key={item.id}>
-                {likes.includes(item.id) ? (
+                {liked?.includes(item) ? (
                   <FavoriteIcon
                     color="error"
                     className="liked"
-                    onClick={() => handleLike(item.id)}
+                    onClick={() => handleLike(item)}
                     sx={{ zIndex: "1", position: "absolute", mt: 1.5 }}
 
                   />
                 ) : (
                   <FavoriteBorderIcon
                     className="like"
-                    onClick={() => handleLike(item.id)}
+                    onClick={() => handleLike(item)}
                     sx={{ zIndex: "1", position: "absolute", mt: 1.5 }}
                   />
                 )}
@@ -67,7 +77,7 @@ export default function MiniCatalog({ props, handleLike, likes, basket, setBaske
                 <div className="extra-info">
                   <p className="catalog__info">{item.info}</p>
                   <p className="catalog__price">{item.price}</p>
-                  {basket.includes(item.id) ? (
+                  {basket ? basket.includes(item) ? (
                     <>
                       <div className='button__catalog__basket__container'>
                         <button className="button__catalog__basket"
@@ -83,45 +93,45 @@ export default function MiniCatalog({ props, handleLike, likes, basket, setBaske
                   ) : (
                     <button
                       className="button__catalog"
-                      onClick={() => setBasket([...basket, item.id])}>
+                      onClick={() => addToBasket(item)}>
                       В корзину
                     </button>
-                  )}
+                  ) : null}
                 </div>
               </div>
             ))}
           </div>
-            <Carousel
-              responsive={responsive}
-              autoPlay={true}
-              autoPlaySpeed={2000}
-              infinite={true}
-            >
-              {data.slice(number_start, number_end).map((item) => (
-                <div className="mini__catalog__mobile">
-                  <img src={item.img} alt="catalog" />
-                  <div className="catalog-content">
-                    <div className="info">
-                      <p className="catalog__title">{item.title}</p>
-                      <p className="catalog__description">{item.description}</p>
-                    </div>
+          <Carousel
+            responsive={responsive}
+            autoPlay={true}
+            autoPlaySpeed={2000}
+            infinite={true}
+          >
+            {data.slice(number_start, number_end).map((item) => (
+              <div className="mini__catalog__mobile">
+                <img src={item.img} alt="catalog" />
+                <div className="catalog-content">
+                  <div className="info">
+                    <p className="catalog__title">{item.title}</p>
+                    <p className="catalog__description">{item.description}</p>
                   </div>
-                  <p className="catalog__info">{item.info}</p>
-                  <p className="catalog__price">{item.price}</p>
-                  {basket.includes(item.id) ? (
-                    <button className="button__catalog__basket"
-                      onClick={handleClickToBasket}>
-                      Перейти к оформлению
-                    </button>
-                  ) : (
-                    <button
-                      className="button__catalog"
-                      onClick={() => setBasket([...basket, item.id])}>
-                      В корзину
-                    </button>
-                  )}
                 </div>
-              ))}
+                <p className="catalog__info">{item.info}</p>
+                <p className="catalog__price">{item.price}</p>
+                {basket ? basket.includes(item) ? (
+                  <button className="button__catalog__basket"
+                    onClick={handleClickToBasket}>
+                    Перейти к оформлению
+                  </button>
+                ) : (
+                  <button
+                    className="button__catalog"
+                    onClick={() => addToBasket(item)}>
+                    В корзину
+                  </button>
+                ) : null}
+              </div>
+            ))}
           </Carousel>
         </div>
       </>

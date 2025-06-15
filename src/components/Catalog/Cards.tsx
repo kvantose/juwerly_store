@@ -1,39 +1,30 @@
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Box } from '@mui/material';
-import { data } from "../../../mock/catalog";
-
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import type { Catalog } from '../../interfaces/catalog';
+import { useJewelryStore } from '../../store';
 
 export default function Cards({ filters,
     coast,
     currentPage,
     pageCount,
-    setPageCount,
-    likes,
-    setLikes,
-    basket,
-    setBasket }: {
+    setPageCount, }: {
         filters: string[],
         coast: number, currentPage: number,
-        pageCount: number, setPageCount: Function, likes: number[],
-        setLikes: Function, basket: number[], setBasket: Function
+        pageCount: number, setPageCount: (number: number) => void,
     }) {
 
-    const [like, setLike] = useState(false);
-        const navigate = useNavigate();
+    const basket = useJewelryStore((state) => state.basket);
+    const likes = useJewelryStore((state) => state.liked);
+    const addToBasket = useJewelryStore((state) => state.addToBasket);
+    const addToLiked = useJewelryStore((state) => state.addToLiked);
+    const removeBasket = useJewelryStore((state) => state.removeBasket);
+    const removeLiked = useJewelryStore((state) => state.removeLiked);
 
-    const handleLike = (id: number) => {
-        if (likes.includes(id)) {
-            setLikes(likes.filter((item) => item !== id));
-        } else {
-            setLikes([...likes, id]);
-        }
-        setLike(!like);
-    };
+    const navigate = useNavigate();
 
+    const data = useJewelryStore((state) => state.catalog);
     const filteredProducts = data.filter((item) => {
         const itemPrice = parseInt(item.price.replace(/\s+руб\./, '').replace(/\s/g, ''));
 
@@ -63,14 +54,16 @@ export default function Cards({ filters,
         return product
     }
 
-    const handleDeleteBasketItem = (id: number): void => {
-        setBasket(basket.filter((item) => item !== id));
-    };
-
-
     const handleClickToBasket = () => {
         navigate("/basket");
     }
+    const handleLike = (item: Catalog) => {
+        if (likes?.includes(item)) {
+            removeLiked(item.id);
+        } else {
+            addToLiked(item);
+        }
+    };
 
     return (
         <>
@@ -86,18 +79,19 @@ export default function Cards({ filters,
                 {products().length > 0 && products().map((item) => (
                     <>
                         <div className="mini__catalog" key={item.id}>
-                            {likes.includes(item.id) ? (
+                            {likes?.includes(item) ? (
                                 <FavoriteIcon
                                     color="error"
                                     className="liked"
-                                    onClick={() => handleLike(item.id)}
-                                    sx={{ zIndex: "1", position: "absolute", mt: 2, ml: 1 }}
+                                    onClick={() => handleLike(item)}
+                                    sx={{ zIndex: "1", position: "absolute", mt: 1.5 }}
+
                                 />
                             ) : (
                                 <FavoriteBorderIcon
                                     className="like"
-                                    onClick={() => handleLike(item.id)}
-                                    sx={{ zIndex: "1", position: "absolute", mt: 2, ml: 1 }}
+                                    onClick={() => handleLike(item)}
+                                    sx={{ zIndex: "1", position: "absolute", mt: 1.5 }}
                                 />
                             )}
                             <div className="catalog-content">
@@ -110,15 +104,15 @@ export default function Cards({ filters,
                             <div className="extra-info">
                                 <p className="catalog__info">{item.info}</p>
                                 <p className="catalog__price">{item.price}</p>
-                                {basket.includes(item.id) ? (
+                                {basket?.includes(item) ? (
                                     <>
                                         <div className='button__catalog__basket__container'>
                                             <button className="button__catalog__basket"
-                                            onClick={handleClickToBasket}>
+                                                onClick={handleClickToBasket}>
                                                 Перейти к оформлению
                                             </button>
                                             <button className="button__catalog__basket__delete"
-                                                onClick={() => handleDeleteBasketItem(item.id)}>
+                                                onClick={() => removeBasket(item.id)}>
                                                 Удалить
                                             </button>
                                         </div>
@@ -126,7 +120,7 @@ export default function Cards({ filters,
                                 ) : (
                                     <button
                                         className="button__catalog"
-                                        onClick={() => setBasket([...basket, item.id])}>
+                                        onClick={() => addToBasket(item)}>
                                         В корзину
                                     </button>
                                 )}
@@ -135,18 +129,18 @@ export default function Cards({ filters,
 
                         <div className="catalog__mobile" key={item.id + "mobile"}>
                             <div className='catalog__mobile__content'>
-                                {likes.includes(item.id) ? (
+                                {likes?.includes(item) ? (
                                     <FavoriteIcon
                                         color="error"
                                         className="liked"
-                                        onClick={() => handleLike(item.id)}
+                                        onClick={() => handleLike(item)}
                                         sx={{ zIndex: "1", position: "absolute", mt: 2, ml: 1 }}
 
                                     />
                                 ) : (
                                     <FavoriteBorderIcon
                                         className="like"
-                                        onClick={() => handleLike(item.id)}
+                                        onClick={() => handleLike(item)}
                                         sx={{ zIndex: "1", position: "absolute", mt: 2, ml: 1 }}
                                     />
                                 )}
@@ -158,7 +152,7 @@ export default function Cards({ filters,
                                     <p className='catalog__mobile__price'>{item.price}</p>
                                 </div>
                             </div>
-                            {basket.includes(item.id) ? (
+                            {basket?.includes(item) ? (
                                 <>
                                     <div className='button__catalog__basket__container'>
                                         <button className="button__catalog__basket"
@@ -166,7 +160,7 @@ export default function Cards({ filters,
                                             Перейти к оформлению
                                         </button>
                                         <button className="button__catalog__basket__delete"
-                                            onClick={() => handleDeleteBasketItem(item.id)}>
+                                            onClick={() => removeBasket(item.id)}>
                                             Удалить
                                         </button>
                                     </div>
@@ -174,7 +168,7 @@ export default function Cards({ filters,
                             ) : (
                                 <button
                                     className="button__catalog"
-                                    onClick={() => setBasket([...basket, item.id])}>
+                                    onClick={() => addToBasket(item)}>
                                     В корзину
                                 </button>
                             )}
